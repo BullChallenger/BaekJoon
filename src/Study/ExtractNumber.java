@@ -13,15 +13,10 @@ public class ExtractNumber {
     private static void solution() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String input = br.readLine();
-        int cnt = 0;
-        input = input.replaceAll("[^0-9]", "");
-        for (int i = 0; i < input.length(); i++) {
-            if (input.charAt(i) != '0') {
-                System.out.println(input.substring(cnt));
-                return;
-            } else {
-                cnt++;
-            }
+        int answer = 0;
+        for (char ch : input.toCharArray()) {
+            if (ch >=48 && ch <= 57) answer = (answer * 10 + (ch - 48));
         }
+        System.out.println(answer);
     }
 }
