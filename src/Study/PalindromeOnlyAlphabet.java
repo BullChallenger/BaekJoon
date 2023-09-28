@@ -13,23 +13,10 @@ public class PalindromeOnlyAlphabet {
     private static void solution() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String input = br.readLine().toLowerCase();
-        char[] words = input.toCharArray();
-        int start = 0;
-        int end = input.length() - 1;
+        input = input.toLowerCase().replaceAll("[^a-z]", "");
+        String temp = new StringBuilder(input).reverse().toString();
 
-        while (start < end) {
-            if (!Character.isAlphabetic(words[start])) start++;
-            else if (!Character.isAlphabetic(words[end])) end--;
-            else {
-                if (words[start] != words[end]) {
-                    System.out.println("NO");
-                    return;
-                } else {
-                    start++;
-                    end--;
-                }
-            }
-        }
-        System.out.println("YES");
+        if (input.equals(temp)) System.out.println("YES");
+        else System.out.println("NO");
     }
 }
