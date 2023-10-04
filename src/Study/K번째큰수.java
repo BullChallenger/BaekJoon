@@ -14,12 +14,7 @@ public class K번째큰수 {
         int K = sc.nextInt();
         int[] cards = new int[N];
 
-        Map<Integer, Integer> map = new TreeMap<>(new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return o2 - o1;
-            }
-        });
+        Set<Integer> set = new TreeSet<>(Collections.reverseOrder());
 
         for (int i = 0; i < N; i++) {
             cards[i] = sc.nextInt();
@@ -29,12 +24,12 @@ public class K번째큰수 {
             for (int j = i + 1; j < N - 1; j++) {
                 for (int k = j + 1; k < N; k++) {
                     int sum = cards[i] + cards[j] + cards[k];
-                    map.put(sum, map.getOrDefault(sum, 0) + 1);
+                    set.add(sum);
                 }
             }
         }
 
-        Iterator<Integer> keys = map.keySet().iterator();
+        Iterator<Integer> keys = set.iterator();
         int cnt = 1;
         while (cnt < N) {
             int key = keys.next();
