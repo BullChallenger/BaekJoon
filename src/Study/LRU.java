@@ -12,21 +12,29 @@ public class LRU {
         Scanner sc = new Scanner(System.in);
         int S = sc.nextInt();
         int N = sc.nextInt();
-        List<Integer> cache = new ArrayList<>();
+        int[] arr = new int[N];
+        int[] cache = new int[S];
 
         for (int i = 0; i < N; i++) {
-            int t = sc.nextInt();
-            if (!cache.contains(t)) {
-                if (cache.size() >= S) cache.remove(0);
-                cache.add(t);
-            } else {
-                cache.remove(Integer.valueOf(t));
-                cache.add(t);
-            }
+            arr[i] = sc.nextInt();
         }
 
-        Collections.reverse(cache);
-        for (Integer i : cache) {
+        for (int i : arr) {
+            int p = -1;
+            for (int j = 0; j < S; j++) if (i == cache[j]) p = j;
+                if (p == -1) {
+                    for (int k = S - 1; k >= 1; k--) {
+                        cache[k] = cache[k - 1];
+                    }
+                } else {
+                    for (int k = p; k >= 1; k--) {
+                        cache[k] = cache[k - 1];
+                    }
+                }
+                cache[0] = i;
+        }
+
+        for (int i : cache) {
             System.out.print(i + " ");
         }
     }
