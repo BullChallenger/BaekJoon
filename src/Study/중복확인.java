@@ -1,6 +1,8 @@
 package Study;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class 중복확인 {
@@ -16,15 +18,17 @@ public class 중복확인 {
         for (int i = 0; i < N; i++) {
             arr[i] = sc.nextInt();
         }
+        Map<Integer, Integer> map = new HashMap<>();
 
         String result = "U";
-        Arrays.sort(arr);
-        for (int i = 0; i < N - 1; i++) {
-            if (arr[i] == arr[i + 1]) {
+        for (int i = 0; i < N; i++) {
+            map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
+            if (map.get(arr[i]) != 1) {
                 result = "D";
                 break;
             }
         }
+
         System.out.println(result);
     }
 
