@@ -22,8 +22,7 @@ public class 뮤직비디오 {
             sum += arr[i];
         }
 
-        Arrays.sort(arr);
-        int lp = arr[N - 1];
+        int lp = Arrays.stream(arr).max().getAsInt();
         int rp = sum;
         while (lp <= rp) {
             int mid = (lp + rp) / 2;
