@@ -30,7 +30,7 @@ public class 합이_같은_부분집합 {
     private static void DFS(int L, int sum) {
         if (flag || sum > (total / 2)) return;
         if (L == N) {
-            if ((total / 2) == sum) {
+            if ((total - sum) == sum) {
                 result = "YES";
                 flag = true;
             }
