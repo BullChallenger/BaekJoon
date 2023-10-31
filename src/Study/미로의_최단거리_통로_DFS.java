@@ -2,7 +2,7 @@ package Study;
 
 import java.util.Scanner;
 
-public class 미로의_최단거리_통로 {
+public class 미로의_최단거리_통로_DFS {
 
     private static int[][] maze = new int[7][7];
     private static int[] dx = { 1, 0, -1, 0 };
@@ -23,6 +23,7 @@ public class 미로의_최단거리_통로 {
         }
 
         DFS(0, 0, 0);
+        if (result == Integer.MAX_VALUE) result = -1;
         System.out.println(result);
     }
 
