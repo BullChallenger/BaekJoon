@@ -10,7 +10,7 @@ public class BoardSum {
 
     private static void solution() {
         Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt();
+        int N = sc.nextInt();       
         int[][] board = new int[N][N];
         int max = 0;
         int sum = 0;
